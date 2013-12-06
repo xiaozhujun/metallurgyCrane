@@ -1,0 +1,212 @@
+<script type="text/javascript">
+	var gdbf1,gdbf2,gdbf4,gdbf5,gdbf6,gdbf7,gdbf14,gdbf15,gdbf16,gdbf17,gdbf18,gdbf19,gdbf20,gdbf21,gdbf22,gdbf23,gdbf24,gdbf30,gdbf31,gdbf32,gdbf33;
+	var bfdata = RGraph.array_pad([], 60);
+	$(document).ready(function(){
+		$("#"+shownId+"FM").show().siblings().hide();
+		// $(".failureTitle:not(:first)",$("[id$='FM']")).next().hide();
+		if (typeof(gdbf4)!="undefined") {gdbf4.stopDrawing();}
+		else{gdbf4 = new GraphDrawer("linebf4", bfdata);}
+		if (typeof(gdbf2)!="undefined") {gdbf2.stopDrawing();}
+		else{gdbf2 = new GraphDrawer("linebf2", bfdata);}
+		if (typeof(gdbf1)!="undefined") {gdbf1.stopDrawing();}
+		else{gdbf1 = new GraphDrawer("linebf1", bfdata);}
+		if (typeof(gdbf5)!="undefined") {gdbf5.stopDrawing();}
+		else{gdbf5 = new GraphDrawer("linebf5", bfdata);}
+		if (typeof(gdbf6)!="undefined") {gdbf6.stopDrawing();}
+		else{gdbf6 = new GraphDrawer("linebf6", bfdata);}
+		if (typeof(gdbf7)!="undefined") {gdbf7.stopDrawing();}
+		else{gdbf7 = new GraphDrawer("linebf7", bfdata);}
+		if (typeof(gdbf14)!="undefined") {gdbf14.stopDrawing();}
+		else{gdbf14 = new GraphDrawer("linebf14", bfdata);}
+		if (typeof(gdbf15)!="undefined") {gdbf15.stopDrawing();}
+		else{gdbf15 = new GraphDrawer("linebf15", bfdata);}
+		if (typeof(gdbf16)!="undefined") {gdbf16.stopDrawing();}
+		else{gdbf16 = new GraphDrawer("linebf16", bfdata);}
+		if (typeof(gdbf17)!="undefined") {gdbf17.stopDrawing();}
+		else{gdbf17 = new GraphDrawer("linebf17", bfdata);}
+		if (typeof(gdbf18)!="undefined") {gdbf18.stopDrawing();}
+		else{gdbf18 = new GraphDrawer("linebf18", bfdata);}
+		if (typeof(gdbf19)!="undefined") {gdbf19.stopDrawing();}
+		else{gdbf19 = new GraphDrawer("linebf19", bfdata);}
+		if (typeof(gdbf20)!="undefined") {gdbf20.stopDrawing();}
+		else{gdbf20 = new GraphDrawer("linebf20", bfdata);}
+		if (typeof(gdbf21)!="undefined") {gdbf21.stopDrawing();}
+		else{gdbf21 = new GraphDrawer("linebf21", bfdata);}
+		if (typeof(gdbf22)!="undefined") {gdbf22.stopDrawing();}
+		else{gdbf22 = new GraphDrawer("linebf22", bfdata);}
+		if (typeof(gdbf23)!="undefined") {gdbf23.stopDrawing();}
+		else{gdbf23 = new GraphDrawer("linebf23", bfdata);}
+		if (typeof(gdbf24)!="undefined") {gdbf24.stopDrawing();}
+		else{gdbf24 = new GraphDrawer("linebf24", bfdata);}
+		if (typeof(gdbf30)!="undefined") {gdbf30.stopDrawing();}
+		else{gdbf30 = new GraphDrawer("linebf30", bfdata);}
+		if (typeof(gdbf31)!="undefined") {gdbf31.stopDrawing();}
+		else{gdbf31 = new GraphDrawer("linebf31", bfdata);}
+		if (typeof(gdbf32)!="undefined") {gdbf32.stopDrawing();}
+		else{gdbf32 = new GraphDrawer("linebf32", bfdata);}
+		if (typeof(gdbf33)!="undefined") {gdbf33.stopDrawing();}
+		else{gdbf33 = new GraphDrawer("linebf33", bfdata);}
+    // setInterval(function(){
+    //   $.ajax({
+    //     url:"http://localhost:8080/portmessageserver/sensors/sensor/zd000002/"+bftime+".htm",
+    //     dataType:'jsonp',
+    //     success: function(data) {
+    //     	var sensorValue = [];
+    //       for (var i = 0; i < data.length; i++) {
+    //         sensorValue = sensorValue.concat(data[i].values[0].value);
+    //         bftime = data[i].timestamp;
+    //       };
+				// 	$("#"+shownId+"FM").show().siblings().hide();
+    //       gdbf4.drawGraph(sensorValue);
+    //     }
+    //   });
+    // }, 1000);
+		gdbf4.drawGraph();
+		gdbf2.drawGraph();
+		gdbf1.drawGraph();
+		gdbf5.drawGraph();
+		gdbf6.drawGraph();
+		gdbf7.drawGraph();
+		gdbf14.drawGraph();
+		gdbf15.drawGraph();
+		gdbf16.drawGraph();
+		gdbf17.drawGraph();
+		gdbf18.drawGraph();
+		gdbf19.drawGraph();
+		gdbf20.drawGraph();
+		gdbf21.drawGraph();
+		gdbf22.drawGraph();
+		gdbf23.drawGraph();
+		gdbf24.drawGraph();
+		gdbf30.drawGraph();
+		gdbf31.drawGraph();
+		gdbf32.drawGraph();
+		gdbf33.drawGraph();
+	});
+</script>
+<div id="bianfuFM" class="reversalInfoTable">
+</div>
+	<div class="canvasDiv" id="gaosuzhouxFM">
+		<div class="failureTitle">高速轴外侧X向振动监测<img src="assets/toggle/green.png"></div>
+		<canvas id="linebf4" width="650" height="300">[No canvas support]</canvas>
+		<div class="detectLink"><a href="">检测</a></div>
+	</div>
+	<div class="canvasDiv" id="gaosuzhouyFM">
+		<div class="failureTitle">高速轴外侧Y向振动监测<img src="assets/toggle/green.png"></div>
+		<canvas id="linebf5" width="650" height="300">[No canvas support]</canvas>
+		<div class="detectLink"><a href="">检测</a></div>
+	</div>
+	<div class="canvasDiv" id="gaosuzhouzFM">
+		<div class="failureTitle">高速轴外侧Z向振动监测<img src="assets/toggle/green.png"></div>
+		<canvas id="linebf6" width="650" height="300">[No canvas support]</canvas>
+		<div class="detectLink"><a href="">检测</a></div>
+	</div>
+	<div class="canvasDiv" id="dijiaoFM">
+		<div class="failureTitle">高速轴地脚1振动监测<img src="assets/toggle/green.png"></div>
+		<canvas id="linebf7" width="650" height="300">[No canvas support]</canvas>
+		<div class="detectLink"><a href="">检测</a></div>
+	</div>
+	<div class="canvasDiv" id="disuzhouxFM">
+		<div class="failureTitle">低速轴外侧X向振动监测<img src="assets/toggle/green.png"></div>
+		<canvas id="linebf14" width="650" height="300">[No canvas support]</canvas>
+		<div class="detectLink"><a href="">检测</a></div>
+	</div>
+	<div class="canvasDiv" id="disuzhouyFM">
+		<div class="failureTitle">低速轴外侧Y向振动监测<img src="assets/toggle/green.png"></div>
+		<canvas id="linebf15" width="650" height="300">[No canvas support]</canvas>
+		<div class="detectLink"><a href="">检测</a></div>
+	</div>
+	<div class="canvasDiv" id="disuzhouzFM">
+		<div class="failureTitle">低速轴外侧Z向振动监测<img src="assets/toggle/green.png"></div>
+		<canvas id="linebf16" width="650" height="300">[No canvas support]</canvas>
+		<div class="detectLink"><a href="">检测</a></div>
+	</div>
+	<div class="canvasDiv" id="youchuangFM">
+		<div class="failureTitle">减速机油窗上侧温度监测<img src="assets/toggle/green.png"></div>
+		<canvas id="linebf17" width="650" height="300">[No canvas support]</canvas>
+		<div class="detectLink"><a href="">检测</a></div>
+	</div>
+	<div class="canvasDiv" id="shangyalun12FM">
+		<div class="failureTitle">上压轮12点方向应力监测<img src="assets/toggle/green.png"></div>
+		<canvas id="linebf18" width="650" height="300">[No canvas support]</canvas>
+		<div class="detectLink"><a href="">检测</a></div>
+	</div>
+	<div class="canvasDiv" id="shangyalun6FM">
+		<div class="failureTitle">上压轮6点方向应力监测<img src="assets/toggle/red.png"></div>
+		<canvas id="linebf19" width="650" height="300">[No canvas support]</canvas>
+		<div class="detectLink"><a href="">检测</a></div>
+	</div>
+	<div class="canvasDiv" id="1xiayalun12FM">
+		<div class="failureTitle">1#下压轮12点方向应力监测<img src="assets/toggle/red.png"></div>
+		<canvas id="linebf20" width="650" height="300">[No canvas support]</canvas>
+		<div class="detectLink"><a href="">检测</a></div>
+	</div>
+	<div class="canvasDiv" id="1xiayalun6FM">
+		<div class="failureTitle">1#压轮6点方向应力监测<img src="assets/toggle/green.png"></div>
+		<canvas id="linebf21" width="650" height="300">[No canvas support]</canvas>
+		<div class="detectLink"><a href="">检测</a></div>
+	</div>
+	<div class="canvasDiv" id="2xiayalun12FM">
+		<div class="failureTitle">2#下压轮12点方向应力监测<img src="assets/toggle/green.png"></div>
+		<canvas id="linebf22" width="650" height="300">[No canvas support]</canvas>
+		<div class="detectLink"><a href="">检测</a></div>
+	</div>
+	<div class="canvasDiv" id="2xiayalun6FM">
+		<div class="failureTitle">2#压轮6点方向应力监测<img src="assets/toggle/red.png"></div>
+		<canvas id="linebf23" width="650" height="300">[No canvas support]</canvas>
+		<div class="detectLink"><a href="">检测</a></div>
+	</div>
+	<div class="canvasDiv" id="qudonglunyingliFM">
+		<div class="failureTitle">驱动轮12点方向应力监测<img src="assets/toggle/red.png"></div>
+		<canvas id="linebf24" width="650" height="300">[No canvas support]</canvas>
+		<div class="detectLink"><a href="">检测</a></div>
+	</div>
+	<div class="canvasDiv" id="qudonglunzhendongFM">
+		<div class="failureTitle">驱动轮12点方向振动监测<img src="assets/toggle/red.png"></div>
+		<canvas id="linebf1" width="650" height="300">[No canvas support]</canvas>
+		<div class="detectLink"><a href="">检测</a></div>
+	</div>
+	<div class="canvasDiv" id="zhouduanxFM">
+		<div class="failureTitle">轴端 X向振动监测<img src="assets/toggle/red.png"></div>
+		<canvas id="linebf30" width="650" height="300">[No canvas support]</canvas>
+		<div class="detectLink"><a href="">检测</a></div>
+	</div>
+	<div class="canvasDiv" id="zhouduanyFM">
+		<div class="failureTitle">轴端 Y向振动监测<img src="assets/toggle/green.png"></div>
+		<canvas id="linebf31" width="650" height="300">[No canvas support]</canvas>
+		<div class="detectLink"><a href="">检测</a></div>
+	</div>
+	<div class="canvasDiv" id="zhouduanzFM">
+		<div class="failureTitle">轴端 Z向振动监测<img src="assets/toggle/green.png"></div>
+		<canvas id="linebf2" width="650" height="300">[No canvas support]</canvas>
+		<div class="detectLink"><a href="">检测</a></div>
+	</div>
+	<div class="canvasDiv" id="chuandongzhouxFM">
+		<div class="failureTitle">传动轴输入X 向振动监测<img src="assets/toggle/green.png"></div>
+		<canvas id="linebf32" width="650" height="300">[No canvas support]</canvas>
+		<div class="detectLink"><a href="">检测</a></div>
+	</div>
+	<div class="canvasDiv" id="chuandongzhouyFM">
+		<div class="failureTitle">传动轴输入Y 向振动监测<img src="assets/toggle/red.png"></div>
+		<canvas id="linebf33" width="650" height="300">[No canvas support]</canvas>
+		<div class="detectLink"><a href="">检测</a></div>
+	</div>
+<div id="bianfudiankongFM" class="reversalInfoTable">
+	<div class="rowDiv">
+		<div class="firstInfoName">监测状态</div>
+		<div class="firstInfoData">故障模式</div>
+	</div>
+	<div class="rowDiv">
+		<div class="infoName"><img src="assets/toggle/green.png"></div>
+		<div class="infoData">变幅不动作</div>
+	</div>
+	<div class="rowDiv">
+		<div class="infoName"><img src="assets/toggle/green.png"></div>
+		<div class="infoData">变幅不加速或不完全加速</div>
+	</div>
+	<div class="rowDiv">
+		<div class="infoName"><img src="assets/toggle/green.png"></div>
+		<div class="infoData">变幅只增幅不收幅或只收幅不增幅</div>
+	</div>
+		<div class="detectLink"><a href="">检测</a></div>
+</div>

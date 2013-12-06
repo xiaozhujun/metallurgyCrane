@@ -1,0 +1,58 @@
+<link rel="stylesheet" type="text/css" href="maintain/css/maintain.css">
+<link rel="stylesheet" type="text/css" href="maintain/css/menu.css">
+<link rel="stylesheet" type="text/css" href="maintain/css/schedule.css">
+<link rel="stylesheet" type="text/css" href="css/docimages.css">
+<script type="text/javascript">
+		
+		$(document).ready(function() {
+			$('.moduleTitle').click(function(){
+			$(this).next().toggle(500);
+		});
+		
+		$('.menuItem').click(function(){
+			$('#maintainRightDiv').load($(this).attr('url'));
+		});
+		$("#maintainRightDiv").load("maintain/schedule.html");
+		});
+		
+</script>
+<div id="maintainBodyDiv">
+	<div id='maintainLeftDiv'>
+		<div class='menuDiv'>
+	    	<div class='menuModule'>
+	    		<div class='moduleTitle'>维修流程</div>
+	    		<div class='menuItems'>
+	    			<div class='menuItem' url='maintain/schedule.html'><div class='menuNameDiv'>维修计划</div></div>
+	    			<div class='menuItem' url='maintain/situation.html'><div class='menuNameDiv'>实际情况</div></div>
+	    			<div class='menuItem' url='maintain/worksheet.html'><div class='menuNameDiv'>工单</div></div>
+	    			<div class='menuItem' url='maintain/faultreport.html'><div class='menuNameDiv'>故障汇报</div></div>
+	    			<div class='menuItem' url='maintain/refdocs.html'><div class='menuNameDiv'>相关文档</div></div>
+	    		</div>
+	    	</div>
+
+	    	<div class='menuModule'>
+	    		<div class='moduleTitle'>计划管理</div>
+	    		<div class='menuItems'>
+	    		</div>
+	    	</div>
+
+	    	<div class='menuModule'>
+	    		<div class='moduleTitle'>标准管理</div>
+	    		<div class='menuItems'>
+	    		</div>
+	    	</div>
+
+	    	<div class='menuModule'>
+	    		<div class='moduleTitle'>安全管理</div>
+	    		<div class='menuItems'>
+	    			<div class='menuItem' url='maintain/gongzuopiao/dianqi1.html'><div class='menuNameDiv'>电气第一种工作票</div></div>
+	    			<div class='menuItem' url='maintain/gongzuopiao/dianqi2.html'><div class='menuNameDiv'>电气第二种工作票</div></div>
+	    			<div class='menuItem' url='maintain/gongzuopiao/donghuo1.html'><div class='menuNameDiv'>一级动火工作票</div></div>
+	    			<div class='menuItem' url='maintain/gongzuopiao/donghuo2.html'><div class='menuNameDiv'>二级动火工作票</div></div>
+	    			<div class='menuItem' url='maintain/gongzuopiao/reli.html'><div class='menuNameDiv'>热力工作票</div></div>
+	    		</div>
+	    	</div>
+	    </div>
+	</div>
+	<div id='maintainRightDiv'></div>
+</div>

@@ -1,0 +1,72 @@
+#maintainBodyDiv
+{
+	width: 100%;
+	float: left;
+    min-height: 660;
+}
+
+#maintainLeftDiv
+{
+    float: left;
+    height: 100%;
+    margin: 0;
+    width: 18%;
+}
+
+#maintainRightDiv
+{
+	border-color: #CCCCCC;
+    border-style: solid;
+    border-width: 1px;
+    float: left;
+    height: 750;
+    margin: 0 0 0 8px;
+    padding: 0;
+    width: 81%;
+}
+
+#deviceRightDiv
+{
+    border-color: #CCCCCC;
+    border-style: solid;
+    border-width: 1px;
+    float: left;
+    height: 750;
+    margin: 0 0 0 8px;
+    padding: 0;
+    width: 100%;
+}
+
+#maintainHeaderDiv div
+{
+    float: left;
+}
+#maintainHeaderDiv img
+{
+    width: 60;
+    height: 60; 
+}
+#maintainHeaderDiv .headerName
+{
+    width: 80;
+    height: 60;
+    padding-top: 20;
+    text-align: center;
+    font-family: 宋体;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333333;
+}
+#maintainCLeftDiv
+{
+    float: left;
+    width: 70%;
+    height: 80%;
+}
+#maintainCRightDiv
+{
+    float: left;
+    width: 29%;
+    border: 1px solid #ccc;
+    height: 80%;
+}

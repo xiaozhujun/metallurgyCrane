@@ -1,0 +1,41 @@
+<link rel="stylesheet" type="text/css" href="css/infotabs.css">
+<link rel="stylesheet" type="text/css" href="deviceManage/css/deviceVisualization.css">
+<script type="text/javascript">
+  $(document).ready(function(){
+  	$("#modelDiv").show();
+  	$("#baseinfoDiv").show();
+  	$("#faultTreeContainer").hide();
+		$("#modelContent").load("machine/model.html");
+		$("#baseinfoContent").load("machine/baseinfo.html");
+    $('#structNavDiv').load('left.html',function(){
+    	$("#machine").trigger("click");
+    });
+
+  //   $(".infoTab").mouseover(function(){
+		// 	$(".currentInfoTab").removeClass("currentInfoTab");
+		// 	$(this).addClass("currentInfoTab");
+		// 	$("."+$(this).attr("cref")).show().siblings().hide();
+		// });
+  });
+</script>
+<div id='structNavDiv'></div>
+<div id='contentDiv'>
+	<div id="modelDiv">
+		<div id="modelTitleDiv">
+			<div class='infoTab'>图纸</div>
+		</div>
+		<div id="modelContent"></div>
+	</div>
+
+	<div id="baseinfoDiv">
+		<div id="baseinfoTitleDiv">
+			<div class="infoTab">基本信息</div>
+			<div class='infoTab'>基本参数</div>
+		</div>
+		<div id="baseinfoContent"></div>
+	</div>
+
+	<div id='faultTreeContainer'>
+		<div id='faultTreeContent'></div>
+	</div>
+</div>

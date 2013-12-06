@@ -1,0 +1,742 @@
+<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.3.custom.css">
+<link rel="stylesheet" type="text/css" href="css/table.css">
+<script type="text/javascript" src="js/myselect.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.10.3.custom.js"></script>
+<script type="text/javascript">
+		$(document).ready(function() {
+			$(".tableColumn").tooltip({
+				content: function(){
+					return $(this).attr("title").replace(/\s/g,"<br>");
+				},
+				position: {my: "right top", at: "right bottom"},
+				tooltipClass: "tooltip",
+				show: false
+			});
+			$("input.date").datepicker();
+			$(".tableRowMainDiv").click(function(){
+				$($(this).next()).toggle(500);
+			});
+		});
+		// 载入选择框数据
+		$("#placeDiv").mySelect({
+			url:"data/place.js",
+			nodata:"none",
+			required:false
+		}); 
+		$("#cityDiv").mySelect({
+			url:"data/city.js",
+			nodata:"none",
+			required:false
+		}); 
+		$("#unitDiv").mySelect({
+			url:"data/unit.js",
+			nodata:"none",
+			required:false
+		}); 
+		$("#devTypeDiv").mySelect({
+			url:"data/devType.js",
+			nodata:"none",
+			required:false
+		}); 
+		$("#riskLvlDiv").mySelect({
+			url:"data/riskLvl.js",
+			nodata:"none",
+			required:false
+		});
+</script>
+<div id="rmBodyDiv">
+	<div id="rmLeftDiv">
+		<div id='queryContainerDiv'>
+			<div id="queryDiv">
+				<form>
+					<div id="placeDiv">
+						<span>应用场所:</span>
+							<select class="lvl1" name="place" style="width:120px"><!--读取应用场所数据--></select>
+						</div>
+					<div id="cityDiv">
+						<span>所在省市:</span>
+		  			<select class="lvl1" name="prov" style="width:70px"></select> 
+		    		<select class="lvl2" disabled="disabled" name="city" style="width:70px"></select>
+		   		</div>
+		   		<div id="unitDiv">
+						<span>使用单位:</span>
+						<select class="lvl1" name="unit" style="width:250px"><!--读取单位数据--></select>
+					</div>
+					<div id="devTypeDiv">
+						<span>设备类型:</span>
+						<select class="lvl1" name="devType" style="width:120px"><!--读取设备类型数据--></select>
+					</div>
+					<div id="riskLvlDiv">
+						<span>风险等级:</span>
+						<select class="lvl1" name="riskLvl" style="width:70px"><!--读取风险等级数据--></select>
+					</div>
+					<div id="dateSelectDiv">
+						<input type="checkbox" name="dateSelect" value="Select">
+						<span>检测日期</span>
+						<input type="text" class="date" style="width:72px">&nbsp&nbsp至&nbsp&nbsp
+						<input type="text" class="date" style="width:72px">
+					</div>
+					<div id="btnDiv">
+						<input type="submit" value="查询">
+					</div>
+				</form>
+			</div>
+		</div>
+		<div id='sortContainerDiv'>
+			<div id="sortDiv">
+				<input type="radio" name="sortWay" value="risk">风险值
+				<input type="radio" name="sortWay" value="place">应用场所
+				<input type="radio" name="sortWay" value="unit">使用单位
+				<input type="radio" name="sortWay" value="devType">设备类型
+				<input type="radio" name="sortWay" value="prov_city">所在省市
+				<input type="radio" name="sortWay" value="cardId">射频卡号
+				<input type="radio" name="sortWay" value="checkDate">检测日期
+			</div>
+		</div>
+	</div>
+	<div id="rmRightDiv">
+		<div id="operationDiv">
+			<button>导入数据</button>
+			<button>生成图表</button>
+			<button>导出数据</button>
+		</div>
+	</div>
+	<div id="tableDiv">
+		<div id="tableHeaderDiv">
+			<div class='tableColumn'>射频卡号</div>
+			<div class='tableColumn'>风险值</div>
+			<div class='tableColumn'>风险等级</div>
+			<div class='tableColumn'>应用场所</div>
+			<div class='tableColumn'>使用单位</div>
+			<div class='tableColumn'>设备类型</div>
+			<div class='tableColumn'>检测日期</div>
+		</div>
+		<div id="tableBodyDiv">
+			<div class='tableRowDiv'>
+				<div class="tableRowMainDiv">
+					<div class='tableColumn'>L1378y3u13F9u26</div>
+					<div class='tableColumn'>67</div>
+					<div class='tableColumn'>2</div>
+					<div class='tableColumn'>建筑工地</div>
+					<div class='tableColumn'>南京市造船厂</div>
+					<div class='tableColumn'>桥式起重机</div>
+					<div class='tableColumn'>2011-03-26</div>
+				</div>
+				<div class='tableRowDetailDiv showFirst'>
+					<div class='rowDiv'>
+						<div class='tableColumn'>失效可能性评估标准</div>
+						<div class='tableColumn'>实际标准</div>
+						<div class='tableColumn'>分值</div>
+						<div class='tableColumn'>权值</div>
+						<div class='tableColumn'>结果</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>现场作业人员数</div>
+						<div class='tableColumn' title="<5人 [5,8)人 [8,10)人 ≥10人">[5,8)人</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">5.000</div>
+						<div class='tableColumn'>.6000</div>
+						<div class='tableColumn'>3.0000</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>设备价值</div>
+						<div class='tableColumn' title="<50万 [50,100)万 [100,200)万 ≥200万">[100,200)万</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.1000</div>
+						<div class='tableColumn'>0.7500</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>使用场所</div>
+						<div class='tableColumn' title="建筑动地 公共场所 学校、医院、文物保护区 其他">公共场所</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.3000</div>
+						<div class='tableColumn'>2.2500</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>工作级别</div>
+						<div class='tableColumn' title="A1-A3 A4-A5 A6-A7 A8">A6-A7</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.0510</div>
+						<div class='tableColumn'>0.3825</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>制造单位资质等级</div>
+						<div class='tableColumn' title="A级 B级 C级 无">C级</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.0820</div>
+						<div class='tableColumn'>0.6150</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>安装单位资质等级</div>
+						<div class='tableColumn' title="A级 B级 C级 无">无</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">10.00</div>
+						<div class='tableColumn'>.0670</div>
+						<div class='tableColumn'>0.6700</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>定期检验情况</div>
+						<div class='tableColumn' title="一次检验合格 1项不合格项目,复检后合格 2-3项不合格项目,复检后合格 大于3项不合格项目,复查后合格">一次检验合格</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">2.500</div>
+						<div class='tableColumn'>.1000</div>
+						<div class='tableColumn'>0.2500</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>设备职管情况</div>
+						<div class='tableColumn' title="有专职机构、专管人员 无专职机构、有专管人员 有专职机构、无专管人员 无专职机构、人员">有专职机构、无专管人员</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.1250</div>
+						<div class='tableColumn'>0.9375</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>设备管理制度及执行记录</div>
+						<div class='tableColumn' title="有安全管理制度、执行记录完好 有安全管理制度、执行记录不全 有安全管理制度、无执行记录 无安全管理制度">有安全管理制度、执行记录不全</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">5.000</div>
+						<div class='tableColumn'>.1210</div>
+						<div class='tableColumn'>0.6050</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>使用年限</div>
+						<div class='tableColumn' title="<5年 [5,10)年 [10,15)年 ≥15年">[5,10)年</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">5.000</div>
+						<div class='tableColumn'>.0850</div>
+						<div class='tableColumn'>0.4250</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>定期维护保养及自检</div>
+						<div class='tableColumn' title="≥1次/月且记录良好 ≥1次/月但记录不完整 <1次/月但记录良好 <1次/月且记录不完整">小于1次、月记录不完整</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">10.00</div>
+						<div class='tableColumn'>.0810</div>
+						<div class='tableColumn'>0.8100</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>操作人员持证时间</div>
+						<div class='tableColumn' title="≥10年 [7,10)年 [3,7)年 <3年">小于3年</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">10.00</div>
+						<div class='tableColumn'>.0710</div>
+						<div class='tableColumn'>0.7100</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>年故障数</div>
+						<div class='tableColumn' title="<4次 [4,12)次 [12,24)次 ≥24次">[4,12)次</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">5.000</div>
+						<div class='tableColumn'>.0520</div>
+						<div class='tableColumn'>0.2600</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>环境条件</div>
+						<div class='tableColumn' title="一般环境条件 符合特殊条件1项 符合特殊条件2项 符合特殊条件2项以上">符合特殊环境1项</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.1010</div>
+						<div class='tableColumn'>0.7575</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>天运行时间</div>
+						<div class='tableColumn' title="<4小时 [4,8)小时 [8,12)小时 ≥12小时">[8,12)小时</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.0640</div>
+						<div class='tableColumn'>0.4800</div>
+					</div>
+				</div>
+			</div>
+			<div class='tableRowDiv'>
+				<div class="tableRowMainDiv">
+					<div class='tableColumn'>L1368y3u54F93ee</div>
+					<div class='tableColumn'>70</div>
+					<div class='tableColumn'>3</div>
+					<div class='tableColumn'>工业园区</div>
+					<div class='tableColumn'>中国建筑科学研究院</div>
+					<div class='tableColumn'>门式起重机</div>
+					<div class='tableColumn'>2012-05-23</div>
+				</div>
+				<div class='tableRowDetailDiv'>
+					<div class='rowDiv'>
+						<div class='tableColumn'>失效可能性评估标准</div>
+						<div class='tableColumn'>实际标准</div>
+						<div class='tableColumn'>分值</div>
+						<div class='tableColumn'>权值</div>
+						<div class='tableColumn'>结果</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>现场作业人员数</div>
+						<div class='tableColumn' title="<5人 [5,8)人 [8,10)人 ≥10人">[5,8)人</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">5.000</div>
+						<div class='tableColumn'>.6000</div>
+						<div class='tableColumn'>3.0000</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>设备价值</div>
+						<div class='tableColumn' title="<50万 [50,100)万 [100,200)万 ≥200万">[100,200)万</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.1000</div>
+						<div class='tableColumn'>0.7500</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>使用场所</div>
+						<div class='tableColumn' title="建筑动地 公共场所 学校、医院、文物保护区 其他">公共场所</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.3000</div>
+						<div class='tableColumn'>2.2500</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>工作级别</div>
+						<div class='tableColumn' title="A1-A3 A4-A5 A6-A7 A8">A6-A7</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.0510</div>
+						<div class='tableColumn'>0.3825</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>制造单位资质等级</div>
+						<div class='tableColumn' title="A级 B级 C级 无">C级</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.0820</div>
+						<div class='tableColumn'>0.6150</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>安装单位资质等级</div>
+						<div class='tableColumn' title="A级 B级 C级 无">无</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">10.00</div>
+						<div class='tableColumn'>.0670</div>
+						<div class='tableColumn'>0.6700</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>定期检验情况</div>
+						<div class='tableColumn' title="一次检验合格 1项不合格项目,复检后合格 2-3项不合格项目,复检后合格 大于3项不合格项目,复查后合格">一次检验合格</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">2.500</div>
+						<div class='tableColumn'>.1000</div>
+						<div class='tableColumn'>0.2500</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>设备职管情况</div>
+						<div class='tableColumn' title="有专职机构、专管人员 无专职机构、有专管人员 有专职机构、无专管人员 无专职机构、人员">有专职机构、无专管人员</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.1250</div>
+						<div class='tableColumn'>0.9375</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>设备管理制度及执行记录</div>
+						<div class='tableColumn' title="有安全管理制度、执行记录完好 有安全管理制度、执行记录不全 有安全管理制度、无执行记录 无安全管理制度">有安全管理制度、执行记录不全</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">5.000</div>
+						<div class='tableColumn'>.1210</div>
+						<div class='tableColumn'>0.6050</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>使用年限</div>
+						<div class='tableColumn' title="<5年 [5,10)年 [10,15)年 ≥15年">[5,10)年</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">5.000</div>
+						<div class='tableColumn'>.0850</div>
+						<div class='tableColumn'>0.4250</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>定期维护保养及自检</div>
+						<div class='tableColumn' title="≥1次/月且记录良好 ≥1次/月但记录不完整 <1次/月但记录良好 <1次/月且记录不完整">小于1次、月记录不完整</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">10.00</div>
+						<div class='tableColumn'>.0810</div>
+						<div class='tableColumn'>0.8100</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>操作人员持证时间</div>
+						<div class='tableColumn' title="≥10年 [7,10)年 [3,7)年 <3年">小于3年</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">10.00</div>
+						<div class='tableColumn'>.0710</div>
+						<div class='tableColumn'>0.7100</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>年故障数</div>
+						<div class='tableColumn' title="<4次 [4,12)次 [12,24)次 ≥24次">[4,12)次</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">5.000</div>
+						<div class='tableColumn'>.0520</div>
+						<div class='tableColumn'>0.2600</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>环境条件</div>
+						<div class='tableColumn' title="一般环境条件 符合特殊条件1项 符合特殊条件2项 符合特殊条件2项以上">符合特殊环境1项</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.1010</div>
+						<div class='tableColumn'>0.7575</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>天运行时间</div>
+						<div class='tableColumn' title="<4小时 [4,8)小时 [8,12)小时 ≥12小时">[8,12)小时</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.0640</div>
+						<div class='tableColumn'>0.4800</div>
+					</div>
+				</div>
+			</div>
+			<div class='tableRowDiv'>
+				<div class="tableRowMainDiv">
+					<div class='tableColumn'>L3596y3u3e69u7e</div>
+					<div class='tableColumn'>30</div>
+					<div class='tableColumn'>1</div>
+					<div class='tableColumn'>建筑工地</div>
+					<div class='tableColumn'>南京市造船厂</div>
+					<div class='tableColumn'>门式起重机</div>
+					<div class='tableColumn'>2013-02-10</div>
+				</div>
+				<div class='tableRowDetailDiv'>
+					<div class='rowDiv'>
+						<div class='tableColumn'>失效可能性评估标准</div>
+						<div class='tableColumn'>实际标准</div>
+						<div class='tableColumn'>分值</div>
+						<div class='tableColumn'>权值</div>
+						<div class='tableColumn'>结果</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>现场作业人员数</div>
+						<div class='tableColumn' title="<5人 [5,8)人 [8,10)人 ≥10人">[5,8)人</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">5.000</div>
+						<div class='tableColumn'>.6000</div>
+						<div class='tableColumn'>3.0000</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>设备价值</div>
+						<div class='tableColumn' title="<50万 [50,100)万 [100,200)万 ≥200万">[100,200)万</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.1000</div>
+						<div class='tableColumn'>0.7500</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>使用场所</div>
+						<div class='tableColumn' title="建筑动地 公共场所 学校、医院、文物保护区 其他">公共场所</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.3000</div>
+						<div class='tableColumn'>2.2500</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>工作级别</div>
+						<div class='tableColumn' title="A1-A3 A4-A5 A6-A7 A8">A6-A7</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.0510</div>
+						<div class='tableColumn'>0.3825</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>制造单位资质等级</div>
+						<div class='tableColumn' title="A级 B级 C级 无">C级</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.0820</div>
+						<div class='tableColumn'>0.6150</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>安装单位资质等级</div>
+						<div class='tableColumn' title="A级 B级 C级 无">无</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">10.00</div>
+						<div class='tableColumn'>.0670</div>
+						<div class='tableColumn'>0.6700</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>定期检验情况</div>
+						<div class='tableColumn' title="一次检验合格 1项不合格项目,复检后合格 2-3项不合格项目,复检后合格 大于3项不合格项目,复查后合格">一次检验合格</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">2.500</div>
+						<div class='tableColumn'>.1000</div>
+						<div class='tableColumn'>0.2500</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>设备职管情况</div>
+						<div class='tableColumn' title="有专职机构、专管人员 无专职机构、有专管人员 有专职机构、无专管人员 无专职机构、人员">有专职机构、无专管人员</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.1250</div>
+						<div class='tableColumn'>0.9375</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>设备管理制度及执行记录</div>
+						<div class='tableColumn' title="有安全管理制度、执行记录完好 有安全管理制度、执行记录不全 有安全管理制度、无执行记录 无安全管理制度">有安全管理制度、执行记录不全</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">5.000</div>
+						<div class='tableColumn'>.1210</div>
+						<div class='tableColumn'>0.6050</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>使用年限</div>
+						<div class='tableColumn' title="<5年 [5,10)年 [10,15)年 ≥15年">[5,10)年</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">5.000</div>
+						<div class='tableColumn'>.0850</div>
+						<div class='tableColumn'>0.4250</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>定期维护保养及自检</div>
+						<div class='tableColumn' title="≥1次/月且记录良好 ≥1次/月但记录不完整 <1次/月但记录良好 <1次/月且记录不完整">小于1次、月记录不完整</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">10.00</div>
+						<div class='tableColumn'>.0810</div>
+						<div class='tableColumn'>0.8100</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>操作人员持证时间</div>
+						<div class='tableColumn' title="≥10年 [7,10)年 [3,7)年 <3年">小于3年</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">10.00</div>
+						<div class='tableColumn'>.0710</div>
+						<div class='tableColumn'>0.7100</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>年故障数</div>
+						<div class='tableColumn' title="<4次 [4,12)次 [12,24)次 ≥24次">[4,12)次</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">5.000</div>
+						<div class='tableColumn'>.0520</div>
+						<div class='tableColumn'>0.2600</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>环境条件</div>
+						<div class='tableColumn' title="一般环境条件 符合特殊条件1项 符合特殊条件2项 符合特殊条件2项以上">符合特殊环境1项</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.1010</div>
+						<div class='tableColumn'>0.7575</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>天运行时间</div>
+						<div class='tableColumn' title="<4小时 [4,8)小时 [8,12)小时 ≥12小时">[8,12)小时</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.0640</div>
+						<div class='tableColumn'>0.4800</div>
+					</div>
+				</div>
+			</div>
+			<div class='tableRowDiv'>
+				<div class="tableRowMainDiv">
+					<div class='tableColumn'>L18463u54F9u7e</div>
+					<div class='tableColumn'>54</div>
+					<div class='tableColumn'>2</div>
+					<div class='tableColumn'>工业园区</div>
+					<div class='tableColumn'>中国建筑科学研究院</div>
+					<div class='tableColumn'>门式起重机</div>
+					<div class='tableColumn'>2013-03-30</div>
+				</div>
+				<div class='tableRowDetailDiv'>
+					<div class='rowDiv'>
+						<div class='tableColumn'>失效可能性评估标准</div>
+						<div class='tableColumn'>实际标准</div>
+						<div class='tableColumn'>分值</div>
+						<div class='tableColumn'>权值</div>
+						<div class='tableColumn'>结果</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>现场作业人员数</div>
+						<div class='tableColumn' title="<5人 [5,8)人 [8,10)人 ≥10人">[5,8)人</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">5.000</div>
+						<div class='tableColumn'>.6000</div>
+						<div class='tableColumn'>3.0000</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>设备价值</div>
+						<div class='tableColumn' title="<50万 [50,100)万 [100,200)万 ≥200万">[100,200)万</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.1000</div>
+						<div class='tableColumn'>0.7500</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>使用场所</div>
+						<div class='tableColumn' title="建筑动地 公共场所 学校、医院、文物保护区 其他">公共场所</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.3000</div>
+						<div class='tableColumn'>2.2500</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>工作级别</div>
+						<div class='tableColumn' title="A1-A3 A4-A5 A6-A7 A8">A6-A7</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.0510</div>
+						<div class='tableColumn'>0.3825</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>制造单位资质等级</div>
+						<div class='tableColumn' title="A级 B级 C级 无">C级</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.0820</div>
+						<div class='tableColumn'>0.6150</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>安装单位资质等级</div>
+						<div class='tableColumn' title="A级 B级 C级 无">无</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">10.00</div>
+						<div class='tableColumn'>.0670</div>
+						<div class='tableColumn'>0.6700</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>定期检验情况</div>
+						<div class='tableColumn' title="一次检验合格 1项不合格项目,复检后合格 2-3项不合格项目,复检后合格 大于3项不合格项目,复查后合格">一次检验合格</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">2.500</div>
+						<div class='tableColumn'>.1000</div>
+						<div class='tableColumn'>0.2500</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>设备职管情况</div>
+						<div class='tableColumn' title="有专职机构、专管人员 无专职机构、有专管人员 有专职机构、无专管人员 无专职机构、人员">有专职机构、无专管人员</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.1250</div>
+						<div class='tableColumn'>0.9375</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>设备管理制度及执行记录</div>
+						<div class='tableColumn' title="有安全管理制度、执行记录完好 有安全管理制度、执行记录不全 有安全管理制度、无执行记录 无安全管理制度">有安全管理制度、执行记录不全</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">5.000</div>
+						<div class='tableColumn'>.1210</div>
+						<div class='tableColumn'>0.6050</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>使用年限</div>
+						<div class='tableColumn' title="<5年 [5,10)年 [10,15)年 ≥15年">[5,10)年</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">5.000</div>
+						<div class='tableColumn'>.0850</div>
+						<div class='tableColumn'>0.4250</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>定期维护保养及自检</div>
+						<div class='tableColumn' title="≥1次/月且记录良好 ≥1次/月但记录不完整 <1次/月但记录良好 <1次/月且记录不完整">小于1次、月记录不完整</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">10.00</div>
+						<div class='tableColumn'>.0810</div>
+						<div class='tableColumn'>0.8100</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>操作人员持证时间</div>
+						<div class='tableColumn' title="≥10年 [7,10)年 [3,7)年 <3年">小于3年</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">10.00</div>
+						<div class='tableColumn'>.0710</div>
+						<div class='tableColumn'>0.7100</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>年故障数</div>
+						<div class='tableColumn' title="<4次 [4,12)次 [12,24)次 ≥24次">[4,12)次</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">5.000</div>
+						<div class='tableColumn'>.0520</div>
+						<div class='tableColumn'>0.2600</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>环境条件</div>
+						<div class='tableColumn' title="一般环境条件 符合特殊条件1项 符合特殊条件2项 符合特殊条件2项以上">符合特殊环境1项</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.1010</div>
+						<div class='tableColumn'>0.7575</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>天运行时间</div>
+						<div class='tableColumn' title="<4小时 [4,8)小时 [8,12)小时 ≥12小时">[8,12)小时</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.0640</div>
+						<div class='tableColumn'>0.4800</div>
+					</div>
+				</div>
+			</div>
+			<div class='tableRowDiv'>
+				<div class="tableRowMainDiv">
+					<div class='tableColumn'>L1834f5654F9u23</div>
+					<div class='tableColumn'>80</div>
+					<div class='tableColumn'>4</div>
+					<div class='tableColumn'>建筑工地</div>
+					<div class='tableColumn'>南京市造船厂</div>
+					<div class='tableColumn'>门式起重机</div>
+					<div class='tableColumn'>2011-09-10</div>
+				</div>
+				<div class='tableRowDetailDiv'>
+					<div class='rowDiv'>
+						<div class='tableColumn'>失效可能性评估标准</div>
+						<div class='tableColumn'>实际标准</div>
+						<div class='tableColumn'>分值</div>
+						<div class='tableColumn'>权值</div>
+						<div class='tableColumn'>结果</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>现场作业人员数</div>
+						<div class='tableColumn' title="<5人 [5,8)人 [8,10)人 ≥10人">[5,8)人</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">5.000</div>
+						<div class='tableColumn'>.6000</div>
+						<div class='tableColumn'>3.0000</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>设备价值</div>
+						<div class='tableColumn' title="<50万 [50,100)万 [100,200)万 ≥200万">[100,200)万</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.1000</div>
+						<div class='tableColumn'>0.7500</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>使用场所</div>
+						<div class='tableColumn' title="建筑动地 公共场所 学校、医院、文物保护区 其他">公共场所</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.3000</div>
+						<div class='tableColumn'>2.2500</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>工作级别</div>
+						<div class='tableColumn' title="A1-A3 A4-A5 A6-A7 A8">A6-A7</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.0510</div>
+						<div class='tableColumn'>0.3825</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>制造单位资质等级</div>
+						<div class='tableColumn' title="A级 B级 C级 无">C级</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.0820</div>
+						<div class='tableColumn'>0.6150</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>安装单位资质等级</div>
+						<div class='tableColumn' title="A级 B级 C级 无">无</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">10.00</div>
+						<div class='tableColumn'>.0670</div>
+						<div class='tableColumn'>0.6700</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>定期检验情况</div>
+						<div class='tableColumn' title="一次检验合格 1项不合格项目,复检后合格 2-3项不合格项目,复检后合格 大于3项不合格项目,复查后合格">一次检验合格</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">2.500</div>
+						<div class='tableColumn'>.1000</div>
+						<div class='tableColumn'>0.2500</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>设备职管情况</div>
+						<div class='tableColumn' title="有专职机构、专管人员 无专职机构、有专管人员 有专职机构、无专管人员 无专职机构、人员">有专职机构、无专管人员</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.1250</div>
+						<div class='tableColumn'>0.9375</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>设备管理制度及执行记录</div>
+						<div class='tableColumn' title="有安全管理制度、执行记录完好 有安全管理制度、执行记录不全 有安全管理制度、无执行记录 无安全管理制度">有安全管理制度、执行记录不全</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">5.000</div>
+						<div class='tableColumn'>.1210</div>
+						<div class='tableColumn'>0.6050</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>使用年限</div>
+						<div class='tableColumn' title="<5年 [5,10)年 [10,15)年 ≥15年">[5,10)年</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">5.000</div>
+						<div class='tableColumn'>.0850</div>
+						<div class='tableColumn'>0.4250</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>定期维护保养及自检</div>
+						<div class='tableColumn' title="≥1次/月且记录良好 ≥1次/月但记录不完整 <1次/月但记录良好 <1次/月且记录不完整">小于1次、月记录不完整</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">10.00</div>
+						<div class='tableColumn'>.0810</div>
+						<div class='tableColumn'>0.8100</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>操作人员持证时间</div>
+						<div class='tableColumn' title="≥10年 [7,10)年 [3,7)年 <3年">小于3年</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">10.00</div>
+						<div class='tableColumn'>.0710</div>
+						<div class='tableColumn'>0.7100</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>年故障数</div>
+						<div class='tableColumn' title="<4次 [4,12)次 [12,24)次 ≥24次">[4,12)次</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">5.000</div>
+						<div class='tableColumn'>.0520</div>
+						<div class='tableColumn'>0.2600</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>环境条件</div>
+						<div class='tableColumn' title="一般环境条件 符合特殊条件1项 符合特殊条件2项 符合特殊条件2项以上">符合特殊环境1项</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.1010</div>
+						<div class='tableColumn'>0.7575</div>
+					</div>
+					<div class='rowDiv'>
+						<div class='tableColumn'>天运行时间</div>
+						<div class='tableColumn' title="<4小时 [4,8)小时 [8,12)小时 ≥12小时">[8,12)小时</div>
+						<div class='tableColumn' title="2.5000 5.0000 7.5000 10.0000">7.500</div>
+						<div class='tableColumn'>.0640</div>
+						<div class='tableColumn'>0.4800</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

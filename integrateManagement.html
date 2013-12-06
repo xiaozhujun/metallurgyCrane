@@ -1,0 +1,61 @@
+<link rel="stylesheet" type="text/css" href="maintain/css/maintain.css">
+<link rel="stylesheet" type="text/css" href="maintain/css/menu.css">
+<script type="text/javascript">
+		
+		$(document).ready(function() {
+			$('.moduleTitle').click(function(){
+			$(this).next().toggle(500);
+		});
+		
+		$('.menuItem').click(function(){
+			$('#maintainRightDiv').load($(this).attr('url'));
+		});
+
+		$("#deviceRightDiv").load("deviceManage/deviceVisualization.html");
+		
+		});
+		
+</script>
+<div id="maintainBodyDiv">
+	<!--
+	<div id='maintainLeftDiv'>
+		<div class='menuDiv'>
+    		<div class='menuModule'>
+	    		<div class='moduleTitle'>设备信息可视化</div>
+	    		<div class='menuItems'>
+	    			&nbsp;
+	    		</div>
+	    	</div>
+	    	
+	    	<div class='menuModule'>
+	    		<div class='moduleTitle'>设备运行情况</div>
+	    		<div class='menuItems'>
+	    			<div class='menuItem' url='integrate/runtimestatistics.html'><div class='menuNameDiv'>运行统计分析</div></div>
+	    		</div>
+	    	</div>
+
+	    	<div class='menuModule'>
+	    		<div class='moduleTitle'>设备管理制度</div>
+	    		<div class='menuItems'>
+	    			<div class='menuItem' url='#'><div class='menuNameDiv'>管理制度1</div></div>
+	    			<div class='menuItem' url='#'><div class='menuNameDiv'>管理制度2</div></div>
+	    			<div class='menuItem' url='#'><div class='menuNameDiv'>管理制度3</div></div>
+	    			<div class='menuItem' url='#'><div class='menuNameDiv'>管理制度4</div></div>
+	    			<div class='menuItem' url='#'><div class='menuNameDiv'>管理制度5</div></div>
+	    		</div>
+	    	</div>
+
+	    	<div class='menuModule'>
+	    		<div class='moduleTitle'>作业人员管理</div>
+	    		<div class='menuItems'>
+	    			<div class='menuItem' url='#'><div class='menuNameDiv'>操作人员</div></div>
+	    			<div class='menuItem' url='#'><div class='menuNameDiv'>检测人员</div></div>
+	    			<div class='menuItem' url='#'><div class='menuNameDiv'>管理人员</div></div>
+	    		</div>
+	    	</div>
+	    	
+	    </div>
+	</div>
+-->
+	<div id='deviceRightDiv'></div>
+</div>

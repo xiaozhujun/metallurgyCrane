@@ -1,0 +1,171 @@
+.title
+{
+	width: 100%;
+	background-color: #aaa; 
+}
+#toolBar
+{
+	float: right;
+	width: 48%;
+	background-color: #aaa; 
+}
+#toolBar,#headerNav
+{
+	margin: 0 0 1em 1em; 
+}
+#headerNav,#mainInfo,#detailInfo,#jobOrder,#worksheel,#worksheelInfo,#fault,#statHistory,#flowHistory
+{
+	float: left;
+	width: 100%;
+	margin-bottom: 1em;
+}
+#toolBar div,#headerNav div
+{
+	float: left;
+	cursor: pointer;
+	margin-right: 1em;
+	text-decoration: underline;
+}
+#mainInfo .label,#mainInfo .inputDiv
+{
+	float: left;
+	margin: 0.5em;
+}
+.infoContainer1
+{
+	float: left;
+	width: 24.5%;
+	padding: 0;
+}
+.infoContainer2
+{
+	float: left;
+	width: 40%;
+	padding: 0;
+}
+.infoContainer3
+{
+	float: left;
+	width: 28%;
+	padding: 0;
+}
+.infoContainer1 .label
+{
+	float: left;
+	width: 100;
+	height: 10;
+	margin: 10 5;
+	text-align: center;
+}
+.infoContainer1 .inputDiv
+{
+	float: left;
+	width: 120;
+	height: 10;
+	margin: 10 5;
+}
+.infoContainer1 input
+{
+	width: 120;
+}
+.infoContainer2 .label
+{	
+	float: left;
+	width: 100;
+	height: 10;
+	margin: 10 5;
+	text-align: center;
+}
+.infoContainer2 .inputDiv
+{
+	float: left;
+	width: 300;
+	height: 10;
+	margin: 10 5;
+}
+.infoContainer2 input
+{
+	margin-right: 1em;
+}
+.infoContainer3 .label
+{
+	float: left;
+	width: 140;
+	height: 10;
+	margin: 10 5;
+	text-align: center;
+}
+.infoContainer3 .inputDiv
+{
+	float: left;
+	width: 120;
+	height: 10;
+	margin: 10 5;
+}
+.infoContainer3 input
+{
+	width: 120;
+}
+.tableHeader,.tableRow
+{
+	float: left;
+	width: 100%;
+}
+.tableHeader
+{
+	text-align: center;
+}
+.col0,.col1,.col2,.col3,.col4,.col5
+{
+	float: left;
+	height: 20;
+	margin: 5 5 0 5;
+}
+.col0,.col0 input
+{
+	width: 70;
+}
+.col1,.col1 input
+{
+	width: 100;
+}
+.col2,.col2 input
+{
+	width: 120;
+}
+.col3,.col3 input
+{
+	width: 150;
+}
+.col4,.col4 input
+{
+	width: 320;
+}
+.col5,.col5 input
+{
+	width: 650;
+}
+.insertBtn
+{
+	float: right;
+	margin: 10 3em 10 10;
+}
+#worksheel .infoTab
+{
+	width: 4em;
+}
+#faultEditBtn
+{
+	float: right;
+	margin-right: 10em;
+}
+#faultEditBtn input
+{
+	padding: 3;
+}
+input[type="button"]
+{
+	font-size: 15;
+	padding: 0 10;
+	height: 25;
+}

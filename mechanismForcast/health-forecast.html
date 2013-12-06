@@ -1,0 +1,46 @@
+<link rel="stylesheet" type="text/css" href="css/infotabs.css">
+<script type="text/javascript">
+  $(document).ready(function(){
+    shownId="xingchengmao1";
+    scope="qisheng";
+    domain="mechanism";
+    // $("#faultTreeContainer").hide();
+    $("#monitorForcastContainer").show();
+    // $("#diagnosisContent").load("mechanism/qisheng/diagnosis.html");
+    $('#navDiv').load('mechanismForcast/left.html',function(){
+   		$("#zd000001").trigger("click");
+    });
+    $('#mainTab .tabItem').click(function(){
+    	$(".containerselected").removeClass("containerselected");
+    	$(this).addClass("containerselected");
+      $("#"+$(this).attr("url")).show().siblings().hide();
+    });
+		$(".infoTab").mouseover(function(){
+			$(".currentInfoTab").removeClass("currentInfoTab");
+			$(this).addClass("currentInfoTab");
+			$("."+$(this).attr("cref")).show().siblings().hide();
+		});
+  });
+</script>
+<div id='navDiv'></div>
+<div id='contentDiv'><!-- 
+	<div id='faultTreeContainer'>
+		<div id='faultTreeContent'></div>
+	</div> -->
+
+	<div id='monitorForcastContainer'>
+		<div id='diagnosisDiv'>
+			<div id='diagnosisContent'>
+				<div class="canvasDiv">
+					<div id="graphTitle" class="failureTitle">行程帽1行程位移监测<img src="assets/toggle/green.png"></div>
+					<canvas id="graphContent" width="650" height="300">[No canvas support]</canvas>
+					<div class="detectLink"><a href="">检测</a></div>
+				</div>
+			</div>
+		</div>
+		<!-- <div id='forecastDiv'>
+			<div id="forecastTitleDiv">健康预报</div>
+			<div id='forecastContent'></div>
+		</div> -->
+	</div>
+</div>

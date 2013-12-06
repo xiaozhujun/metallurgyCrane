@@ -1,0 +1,105 @@
+.inforow
+{
+	float: left;
+	width: 100%;
+	margin: 8;
+}
+
+.inforow div
+{
+	float: left;
+	margin-left: 10;
+	margin-right: 10; 
+}
+.information
+{
+	float: left;
+	width: 50%;
+}
+.parameter
+{
+	margin-left: 5px; 
+	float: left;
+	width: 48%;
+}
+.information img,.parameter img
+{
+	width: 90%;
+}
+
+.figure
+{
+	float: left;
+	width: 50%;
+}
+.draft
+{
+	margin-left: 5px; 
+	float: left;
+	width: 48%;
+}
+.figure img,.draft img
+{
+	width: 90%;
+}
+.failureTitle
+{
+	width: 90%;
+	float: left;
+	padding: 5px;
+	padding-left: 1.5em;
+	margin-bottom: 1px;
+	background-color: #aaa;
+	font-weight: 900;
+	font-size: 21;
+}
+.failureTitle img
+{
+	margin-right:20px; 
+	float: right;
+	width: 21;
+	height: 21;
+}
+.bullet img
+{
+	float: left;
+	width: 16;
+	height: 16;
+	margin-top: 3.5px;
+	/*margin-right: 6em;*/
+}
+.failureTable
+{
+	margin: 5px;
+	padding-bottom: 20;
+	float: left;
+	width: 32%;
+	background-color: #eee;
+}
+#forecastContent .failureTable
+{
+	height: 200;
+}
+.detectLink
+{
+	float: right;
+	margin-right: 1em;
+	margin-top: 0.5em;
+}
+.canvasDiv
+{
+	margin: 5px;
+	padding-bottom: 20;
+	float: left;
+	width: 90%;
+	background-color: #eee;
+}
+
+.canvasDiv canvas
+{
+	width: 100%;
+}
+.canvasDiv .failureTitle
+{
+	width: 96.3%;
+}

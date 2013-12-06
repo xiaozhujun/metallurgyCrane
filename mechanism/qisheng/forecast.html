@@ -1,0 +1,246 @@
+<script src="js/rgraph/libraries/RGraph.common.core.js" ></script>
+<script src="js/rgraph/libraries/RGraph.common.effects.js" ></script>
+<script src="js/rgraph/libraries/RGraph.line.js" ></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#"+shownId+"FC").show().siblings().hide();
+		// $(".failureTitle:not(:first)",$("[id$='FC']")).next().hide();
+		// $(".failureTitle").click(function(){
+		// 		$(this).next().slideToggle();
+		// });
+
+		showGrahp("cvs");
+	});
+
+	
+
+	function showGrahp(target)
+	{
+			var RG        = RGraph;
+            var canvas    = document.getElementById(target);
+            var obj       = null;
+            var data      = [];
+            var l         = 0; // The letter 'L' - NOT a one
+            var numvalues = 1200;
+        
+            // Pre-pad the arrays with null values
+            for (var i=0; i<numvalues; ++i) {
+                data.push(null);
+            }
+        
+            function drawGraph ()
+            {
+                RG.Clear(canvas);
+                
+
+                if (!obj) {
+                    obj = new RG.Line(target, [])
+                        .Set('xticks', 100)
+                        .Set('background.barcolor1', 'white')
+                        .Set('background.barcolor2', 'white')
+                        .Set('title.xaxis', 'Last minute')
+                        .Set('title.yaxis', 'Bandwidth (MB/s)')
+                        .Set('title.vpos', 0.5)
+                        .Set('title', 'Bandwidth used')
+                        .Set('title.yaxis.pos', 0.5)
+                        .Set('title.xaxis.pos', 0.5)
+                        .Set('colors', ['black'])
+                        .Set('linewidth',0.5)
+                        .Set('yaxispos', 'right')
+                        .Set('ymax', 50)
+                        .Set('xticks', 25)
+                        .Set('filled', true);
+                    
+                    var grad = obj.context.createLinearGradient(0,0,0,250);
+                    grad.addColorStop(0, '#efefef');
+                    grad.addColorStop(0.9, 'rgba(0,0,0,0)');
+    
+                    obj.Set('chart.fillstyle', [grad]);
+                }
+
+                // Add some data to the data arrays
+                var len          = data.length;
+                var lastvalue    = RG.is_null(data[len - 1]) ? 26 : data[len - 1];
+                var random_value = RG.random(lastvalue  - 2,lastvalue  + 2);
+               
+               random_value = Math.max(random_value, 0);
+               random_value = Math.min(random_value, 50);
+
+                data.push(random_value);
+                
+                if (data.length > numvalues) {
+                    data = RG.array_shift(data);
+                }
+    
+                if (ISIE8) {
+                    alert('[MSIE] Sorry, Internet Explorer 8 is not fast enough to support dynamic charts');
+                } else {
+                    obj.original_data[0] = data;
+                    obj.Draw();
+                    setTimeout(drawGraph, 50);
+                }
+            }
+        
+            drawGraph();
+	}
+</script>
+<div id="qishengFC">
+
+	<div class="failureTable" style="width:100%;">
+		<canvas id="cvs" style='width:100%;height:100%'>[No canvas support]</canvas>
+	</div>
+
+	<div class="failureTable">
+		<div class="failureTitle">取物装置断裂导致所取物体掉落</div>
+		<div class="reversalInfoTable">
+			<div class="rowDiv">
+				<div class="firstInfoName">监测状态</div>
+				<div class="firstInfoData">故障因素</div>
+			</div>
+			<div class="rowDiv">
+				<div class="infoName"><img src="assets/toggle/yellow.png"></div>
+				<div class="infoData">磨损</div>
+			</div>
+			<div class="rowDiv">
+				<div class="infoName"><img src="assets/toggle/yellow.png"></div>
+				<div class="infoData">锈蚀</div>
+			</div>
+			<div class="rowDiv">
+				<div class="infoName"><img src="assets/toggle/yellow.png"></div>
+				<div class="infoData">裂纹</div>
+			</div>
+		</div>
+	</div>
+	<div class="failureTable">
+		<div class="failureTitle">制动器失效</div>
+		<div class="reversalInfoTable">
+			<div class="rowDiv">
+				<div class="firstInfoName">监测状态</div>
+				<div class="firstInfoData">故障因素</div>
+			</div>
+			<div class="rowDiv">
+				<div class="infoName"><img src="assets/toggle/green.png"></div>
+				<div class="infoData">传动轴断裂</div>
+			</div>
+			<div class="rowDiv">
+				<div class="infoName"><img src="assets/toggle/yellow.png"></div>
+				<div class="infoData">花键断裂</div>
+			</div>
+		</div>
+	</div>
+	
+</div>
+<div id="diaogouzuFC"></div>
+<div id="zhuadouFC"></div>
+<div id="jizhuangxiangdiaojuFC"></div>
+<div id="juantongFC"></div>
+<div id="gangsishengFC"></div>
+<div id="hualunFC"></div>
+<div id="diandongjiFC"></div>
+<div id="zhidongqiFC"></div>
+<div id="jiansuqiFC"></div>
+<div id="juantong1FC"></div>
+<div id="lianzhouqiFC"></div>
+<div id="qishengdiankongFC">
+	<div class="failureTable">
+		<div class="failureTitle">起升双机不动作</div>
+		<div class="reversalInfoTable">
+			<div class="rowDiv">
+				<div class="firstInfoName">监测状态</div>
+				<div class="firstInfoData">故障因素</div>
+			</div>
+			<div class="rowDiv">
+				<div class="infoName"><img src="assets/toggle/green.png"></div>
+				<div class="infoData">控制开关</div>
+			</div>
+			<div class="rowDiv">
+				<div class="infoName"><img src="assets/toggle/yellow.png"></div>
+				<div class="infoData">送电按钮</div>
+			</div>
+			<div class="rowDiv">
+				<div class="infoName"><img src="assets/toggle/yellow.png"></div>
+				<div class="infoData">选择功能开关</div>
+			</div>
+			<div class="rowDiv">
+				<div class="infoName"><img src="assets/toggle/green.png"></div>
+				<div class="infoData">零压继电器</div>
+			</div>
+			<div class="rowDiv">
+				<div class="infoName"><img src="assets/toggle/yellow.png"></div>
+				<div class="infoData">闭合提升机限位</div>
+			</div>
+		</div>
+	</div>
+	<div class="failureTable" style="height:210">
+		<div class="failureTitle">单机不动作</div>
+		<div class="reversalInfoTable">
+			<div class="rowDiv">
+				<div class="firstInfoName">监测状态</div>
+				<div class="firstInfoData">故障因素</div>
+			</div>
+			<div class="rowDiv">
+				<div class="infoName"><img src="assets/toggle/yellow.png"></div>
+				<div class="infoData">制动器</div>
+			</div>
+			<div class="rowDiv">
+				<div class="infoName"><img src="assets/toggle/green.png"></div>
+				<div class="infoData">控制继电器</div>
+			</div>
+			<div class="rowDiv">
+				<div class="infoName"><img src="assets/toggle/yellow.png"></div>
+				<div class="infoData">本机限位</div>
+			</div>
+		</div>
+	</div>
+	<div class="failureTable">
+		<div class="failureTitle">起升不加速</div>
+		<div class="reversalInfoTable">
+			<div class="rowDiv">
+				<div class="firstInfoName">监测状态</div>
+				<div class="firstInfoData">故障因素</div>
+			</div>
+			<div class="rowDiv">
+				<div class="infoName"><img src="assets/toggle/green.png"></div>
+				<div class="infoData">加速接触器</div>
+			</div>
+			<div class="rowDiv">
+				<div class="infoName"><img src="assets/toggle/yellow.png"></div>
+				<div class="infoData">一级接触器</div>
+			</div>
+			<div class="rowDiv">
+				<div class="infoName"><img src="assets/toggle/green.png"></div>
+				<div class="infoData">接触器的辅助开关</div>
+			</div>
+			<div class="rowDiv">
+				<div class="infoName"><img src="assets/toggle/yellow.png"></div>
+				<div class="infoData">加速继电器/时间继电器</div>
+			</div>
+		</div>
+	</div>
+	<div class="failureTable">
+		<div class="failureTitle">双机不同步</div>
+		<div class="reversalInfoTable">
+			<div class="rowDiv">
+				<div class="firstInfoName">监测状态</div>
+				<div class="firstInfoData">故障因素</div>
+			</div>
+			<div class="rowDiv">
+				<div class="infoName"><img src="assets/toggle/yellow.png"></div>
+				<div class="infoData">电阻器</div>
+			</div>
+			<div class="rowDiv">
+				<div class="infoName"><img src="assets/toggle/yellow.png"></div>
+				<div class="infoData">快慢档选择</div>
+			</div>
+			<div class="rowDiv">
+				<div class="infoName"><img src="assets/toggle/yellow.png"></div>
+				<div class="infoData">左右机接触器</div>
+			</div>
+			<div class="rowDiv">
+				<div class="infoName"><img src="assets/toggle/green.png"></div>
+				<div class="infoData">左右制动器</div>
+			</div>
+		</div>
+	</div>
+</div>
