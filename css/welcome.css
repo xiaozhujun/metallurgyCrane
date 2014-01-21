@@ -10,3 +10,41 @@ body
 	height:100%;
 	cursor: pointer;
 }
+
+#welcomeTitle
+{
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	font-size: 55px;
+	font-weight: bold;
+	color: white;
+	top:150px;
+	font-family: 黑体；
+	cursor: pointer;
+}
+
+#splitContainer
+{
+	position: absolute;
+	width: 100%;
+	top:205px;
+	cursor: pointer;
+}
+
+#logoContainer
+{
+	position: absolute;
+	width: 100%;
+	top:250px;
+	text-align: center;
+	cursor: pointer;
+}
+
+#welcometTextContainer
+{
+	position: absolute;
+	top:80%;
+	left: 80%;
+	cursor: pointer;
+}
