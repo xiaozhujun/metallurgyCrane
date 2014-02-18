@@ -49,10 +49,12 @@
       }
       event.stopPropagation();
     });
+
+    $("#gaosuzhoux").trigger("click");
   });
 
 </script>
-<div id="mTree" domain="mechanism">
+<div id="mTree" domain="mechanism" class="monitorForcast">
       <div class="treeItem" scope="qisheng">
             <div class="itemTitle titleShow">起升机构</div>
             <div class="itemContent contentShow">
@@ -79,7 +81,7 @@
               <div class="treeItem">
                 <div class="itemTitle titleShow">制动器</div>
                 <div class="itemContent contentShow">
-                  <div class="bullet menuSelected" id="zd000001" real="true">行程帽行程位移监测</div>
+                  <div class="bullet menuSelected" id="zd000001" >行程帽行程位移监测</div>
                 </div>
               </div>
               
