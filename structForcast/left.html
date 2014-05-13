@@ -27,19 +27,14 @@
       } 
       if($(this).attr("real")=="true"){
         if (typeof(time)=="undefined") {time = 0;}
-        var sensorId = $(this).attr("id");
+        var sensorId = $(this).attr("sensorNum");
         rgd = new RealGraphDrawer("graphContent1", data);
         token = setInterval(function(){
           $.ajax({
-            url:$.URL.sensor.getDataWithTime+sensorId+"/"+time+".htm",
+            url:$.URL.sensor.getDataWithTime+sensorId+".htm",
             dataType:'jsonp',
-            success: function(data) {
-              var sensorValue = [];
-              for (var i = 0; i < data.length; i++) {
-                sensorValue = sensorValue.concat(data[i].values[0].value);
-                time = data[i].timestamp;
-              };
-              rgd.drawGraph(sensorValue);
+            success: function(response) {
+              rgd.drawGraph(response.data);
             }
           });
         }, 1000);
@@ -60,115 +55,39 @@
         <div class="itemTitle titleShow">桥架</div>
         <div class="itemContent contentShow">
           <div class="treeItem">
-            <div class="itemTitle titleShow">主梁1跨中底板位置应力监测</div>
+            <div class="itemTitle titleShow">主梁左</div>
             <div class="itemContent contentShow">
-              <div class="bullet" id="yingbing11">应变传感器1#</div>
-              <div class="bullet" id="yingbing12">应变传感器2#</div>
-              <div class="bullet" id="yingbing13">应变传感器3#</div>
-              <div class="bullet" id="yingbing14">应变传感器4#</div>
-              <div class="bullet" id="yingbing15">应变传感器5#</div>
-              <div class="bullet" id="yingbing16">应变传感器6#</div>
-              <div class="bullet" id="yingbing17">应变传感器7#</div>
-              <div class="bullet" id="yingbing18">应变传感器8#</div>
-              <div class="bullet" id="yingbing19">应变传感器9#</div>
+              <div class="bullet" real="true" sensorNum="101" id="yingbing101">101应变</div>
+              <div class="bullet" real="true" sensorNum="102" id="yingbing102">102应变</div>
+              <div class="bullet" real="true" sensorNum="103" id="yingbing103">103温度</div>
+              <div class="bullet" real="true" sensorNum="104" id="yingbing104">104应变</div>
             </div>
           </div>
           <div class="treeItem">
-            <div class="itemTitle">主梁2跨中底板位置应力监测</div>
+            <div class="itemTitle">端梁左</div>
             <div class="itemContent">
-              <div class="bullet" id="yingbing21">应变传感器11#</div>
-              <div class="bullet" id="yingbing22">应变传感器12#</div>
-              <div class="bullet" id="yingbing23">应变传感器13#</div>
-              <div class="bullet" id="yingbing24">应变传感器14#</div>
-              <div class="bullet" id="yingbing25">应变传感器15#</div>
-              <div class="bullet" id="yingbing26">应变传感器16#</div>
-              <div class="bullet" id="yingbing27">应变传感器17#</div>
-              <div class="bullet" id="yingbing28">应变传感器18#</div>
-              <div class="bullet" id="yingbing29">应变传感器19#</div>
+              <div class="bullet" real="true" sensorNum="105" id="yingbing105">105应变</div>
+              <div class="bullet" real="true" sensorNum="106" id="yingbing106">106温度</div>
             </div>
           </div>
 
           <div class="treeItem">
-            <div class="itemTitle">主梁1的1/4跨底板位置应力监测</div>
+            <div class="itemTitle">主梁右</div>
             <div class="itemContent">
-              <div class="bullet" id="yingbing1">应变传感器21#</div>
-              <div class="bullet" id="yingbing2">应变传感器22#</div>
-              <div class="bullet" id="yingbing3">应变传感器23#</div>
-              <div class="bullet" id="yingbing4">应变传感器24#</div>
-              <div class="bullet" id="yingbing5">应变传感器25#</div>
-              <div class="bullet" id="yingbing6">应变传感器26#</div>
-              <div class="bullet" id="yingbing7">应变传感器27#</div>
-              <div class="bullet" id="yingbing8">应变传感器28#</div>
-              <div class="bullet" id="yingbing9">应变传感器29#</div>
+              <div class="bullet" real="true" sensorNum="201" id="yingbing201">201应变</div>
+              <div class="bullet" real="true" sensorNum="202" id="yingbing202">202应变</div>
+              <div class="bullet" real="true" sensorNum="203" id="yingbing203">203温度</div>
+              <div class="bullet" real="true" sensorNum="204" id="yingbing204">204应变</div>
             </div>
           </div>
           <div class="treeItem">
-            <div class="itemTitle">主梁2的1/4跨底板位置应力监测</div>
+            <div class="itemTitle">端梁右</div>
             <div class="itemContent">
-              <div class="bullet" id="yingbing1">应变传感器31#</div>
-              <div class="bullet" id="yingbing2">应变传感器32#</div>
-              <div class="bullet" id="yingbing3">应变传感器33#</div>
-              <div class="bullet" id="yingbing4">应变传感器34#</div>
-              <div class="bullet" id="yingbing5">应变传感器35#</div>
-              <div class="bullet" id="yingbing6">应变传感器36#</div>
-              <div class="bullet" id="yingbing7">应变传感器37#</div>
-              <div class="bullet" id="yingbing8">应变传感器38#</div>
-              <div class="bullet" id="yingbing9">应变传感器39#</div>
+              <div class="bullet" real="true" sensorNum="205" id="yingbing205">205应变</div>
+              <div class="bullet" real="true" sensorNum="206" id="yingbing206">206温度</div>
             </div>
           </div>
 
-          <div class="treeItem">
-            <div class="itemTitle">主梁1与端梁1的相接处#应力监测</div>
-            <div class="itemContent">
-              <div class="bullet" id="yingbing1">应变传感器41#</div>
-              <div class="bullet" id="yingbing2">应变传感器42#</div>
-              <div class="bullet" id="yingbing3">应变传感器43#</div>
-              <div class="bullet" id="yingbing4">应变传感器44#</div>
-              <div class="bullet" id="yingbing5">应变传感器45#</div>
-              <div class="bullet" id="yingbing6">应变传感器46#</div>
-              <div class="bullet" id="yingbing7">应变传感器47#</div>
-              <div class="bullet" id="yingbing8">应变传感器48#</div>
-            </div>
-          </div>
-          <div class="treeItem">
-            <div class="itemTitle">主梁1与端梁2的相接处#应力监测</div>
-            <div class="itemContent">
-              <div class="bullet" id="yingbing1">应变传感器51#</div>
-              <div class="bullet" id="yingbing2">应变传感器52#</div>
-              <div class="bullet" id="yingbing3">应变传感器53#</div>
-              <div class="bullet" id="yingbing4">应变传感器54#</div>
-              <div class="bullet" id="yingbing5">应变传感器55#</div>
-              <div class="bullet" id="yingbing6">应变传感器56#</div>
-              <div class="bullet" id="yingbing7">应变传感器57#</div>
-              <div class="bullet" id="yingbing8">应变传感器58#</div>
-            </div>
-          </div>
-
-          <div class="treeItem">
-            <div class="itemTitle">主梁2与端梁1的相接处#应力监测</div>
-            <div class="itemContent">
-              <div class="bullet" id="yingbing1">应变传感器61#</div>
-              <div class="bullet" id="yingbing2">应变传感器62#</div>
-              <div class="bullet" id="yingbing3">应变传感器63#</div>
-              <div class="bullet" id="yingbing4">应变传感器64#</div>
-              <div class="bullet" id="yingbing5">应变传感器65#</div>
-              <div class="bullet" id="yingbing6">应变传感器66#</div>
-              <div class="bullet" id="yingbing7">应变传感器67#</div>
-              <div class="bullet" id="yingbing8">应变传感器68#</div>
-            </div>
-          </div>
-          <div class="treeItem">
-            <div class="itemTitle">主梁2与端梁2的相接处#应力监测</div>
-            <div class="itemContent">
-              <div class="bullet" id="yingbing1">应变传感器71#</div>
-              <div class="bullet" id="yingbing2">应变传感器72#</div>
-              <div class="bullet" id="yingbing3">应变传感器73#</div>
-              <div class="bullet" id="yingbing4">应变传感器74#</div>
-              <div class="bullet" id="yingbing5">应变传感器75#</div>
-              <div class="bullet" id="yingbing6">应变传感器76#</div>
-              <div class="bullet" id="yingbing7">应变传感器77#</div>
-              <div class="bullet" id="yingbing8">应变传感器78#</div>
-          </div>
-        </div>
       </div>
+</div>
 </div>

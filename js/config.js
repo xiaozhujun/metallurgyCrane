@@ -1,7 +1,7 @@
 (function($){
 	$.URL = {
 		"sensor":{
-			"getDataWithTime":"/craneDataProvider/sensors/sensor/",
+			"getDataWithTime":"/craneDataProvider/sensors/sensor/data/"
 		}
 		
 	}
